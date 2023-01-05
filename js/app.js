@@ -1,13 +1,4 @@
-function getLocation() {
-  return new Promise((resolve) => {
-    navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-      resolve({ latitude, longitude });
-    });
-  });
-}
-
-async function initMap() {
-  const { latitude: lat, longitude: lng } = await getLocation();
+function initMap(lat, lng) {
   const directionsRenderer = new google.maps.DirectionsRenderer();
   const directionsService = new google.maps.DirectionsService();
   const map = new google.maps.Map(document.getElementById("map"), {
@@ -35,4 +26,13 @@ async function initMap() {
     .catch((e) => window.alert("Directions request failed due to " + status));
 }
 
-window.initMap = initMap;
+function getLocation() {
+  navigator.geolocation.getCurrentPosition(data => {
+    console.log(data);
+    const lat = data.coords.latitude;
+    const lon = data.coords.longitude;
+    initMap(lat, lon);
+  });
+}
+
+getLocation();
