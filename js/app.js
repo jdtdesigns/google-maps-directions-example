@@ -16,7 +16,7 @@ function initMap(lat, lng) {
 
   directionsService
     .route({
-      origin: 'Atlanta, GA',
+      origin: 'Atlanta, GA', // You can pass lat and long in as a string as well. ie `${lat}, ${lng}`
       destination: 'Jacksonville, FL',
       travelMode: google.maps.TravelMode.BICYCLING,
     })
