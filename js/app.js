@@ -28,7 +28,6 @@ function initMap(lat, lng) {
 
 function getLocation() {
   navigator.geolocation.getCurrentPosition(data => {
-    console.log(data);
     const lat = data.coords.latitude;
     const lon = data.coords.longitude;
     initMap(lat, lon);
